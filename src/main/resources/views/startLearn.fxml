@@ -11,7 +11,7 @@
          <children>
             <AnchorPane styleClass="left-part" stylesheets="@../css.css">
                <children>
-                  <TreeView id="treeView" fx:id="treeView" onMouseClicked="#selectItem" />
+                  <TreeView id="treeView" fx:id="treeView" />
                </children>
             </AnchorPane>
             <AnchorPane styleClass="right-part" stylesheets="@../css.css">

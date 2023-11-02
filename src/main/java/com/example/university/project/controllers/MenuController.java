@@ -2,6 +2,7 @@ package com.example.university.project.controllers;
 
 import com.example.university.project.scenes.AboutUs;
 import com.example.university.project.scenes.StartLearn;
+import com.example.university.project.scenes.Test;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,6 +32,7 @@ public class MenuController {
     @FXML
     public void switchToTest(ActionEvent event) throws Exception {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        new Test().start(stage);
     }
     /**
      * Switches to the "Start Learn" scene.
