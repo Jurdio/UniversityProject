@@ -1,0 +1,85 @@
+.label{
+        -fx-background-color: blue;
+}
+.buttonLearn{
+    -fx-pref-width: 200;
+    -fx-pref-height: 100;
+}
+
+.button{
+    -fx-pref-width: 200;
+    -fx-pref-height: 100;
+}
+#menuBar{
+   -fx-background-color: rgb(46, 35, 47, 0.5);
+   -fx-background-radius: 20;
+   -fx-pref-width: 400;
+   -fx-pref-height: 500;
+
+}
+#menuTitle{
+   -fx-font-size: 100px;
+   -fx-pref-height: 250;
+   -fx-pref-width: 300;
+
+}
+#anchorPaneMain{
+    -fx-pref-width: 1000;
+    -fx-pref-height: 600;
+    -fx-background-image: url('images/wp10280191.jpg');
+    -fx-background-size: cover; /* або contain, або інший розмір */
+}
+#aboutsUsTablet{
+    -fx-pref-width: 400;
+    -fx-pref-height: 450;
+    -fx-background-color: white;
+
+}
+#aboutUsTextFlow{
+    -fx-text-alignment: center;
+    -fx-pref-width: 300;
+    -fx-pref-height: 275;
+}
+#logoAboutUs{
+    -fx-background-image: url('images/logo.jpg');
+}
+#titleAboutUs{
+    -fx-font-size: 26px;
+}
+#aboutUsButton{
+    -fx-pref-width: 100; /* Бажана ширина */
+    -fx-pref-height: 45; /* Бажана висота */
+    -fx-font-size: 24px;
+}
+#window{
+    -fx-pref-height: 600;
+    -fx-pref-width: 1000;
+    -fx-background-image: url('images/logo.jpg');
+    -fx-background-size: cover; /* або contain, або інший розмір */
+}
+.window{
+    -fx-pref-height: 600;
+    -fx-pref-width: 1000;
+}
+.left-part{
+    -fx-pref-width: 250;
+    -fx-pref-height: inherit;
+}
+.right-part{
+    -fx-pref-width: 750;
+    -fx-pref-height: inherit;
+}
+#treeView{
+    -fx-pref-width: inherit;
+    -fx-pref-height: inherit;
+}
+#textFlow{
+    -fx-pref-width: 600;
+    -fx-pref-height: 400;
+}
+.learnButton{
+    -fx-pref-height: 50;
+    -fx-pref-width: 150;
+}
+
+

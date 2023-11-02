@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane styleClass="window" stylesheets="@../css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.university.project.controllers.StartLearnController">
+   <children>
+      <HBox styleClass="window">
+         <children>
+            <AnchorPane styleClass="left-part" stylesheets="@../css.css">
+               <children>
+                  <TreeView id="treeView" fx:id="treeView" onMouseClicked="#selectItem" />
+               </children>
+            </AnchorPane>
+            <AnchorPane styleClass="right-part" stylesheets="@../css.css">
+               <children>
+                  <TextFlow id="textFlow" fx:id="textFlow" layoutX="75.0" layoutY="56.0" lineSpacing="3.0" prefHeight="438.0" prefWidth="697.0" />
+                  <Button layoutX="26.0" layoutY="525.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="127.0" styleClass="learnButton" text="Button" />
+                  <Button layoutX="567.0" layoutY="525.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="127.0" styleClass="learnButton" text="Button" />
+                  <Pagination layoutX="40.0" layoutY="152.0" prefHeight="337.0" prefWidth="577.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
