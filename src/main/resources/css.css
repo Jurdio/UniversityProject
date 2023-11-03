@@ -76,6 +76,8 @@
 #textFlow{
     -fx-pref-width: 600;
     -fx-pref-height: 400;
+    -fx-text-alignment: justify;
+    -fx-wrap-text: true;
 }
 .learnButton{
     -fx-pref-height: 50;
