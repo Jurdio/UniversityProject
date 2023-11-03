@@ -3,16 +3,15 @@ package com.example.university.project.controllers;
 import com.google.gson.annotations.SerializedName;
 
 public class Subtopic {
-    @SerializedName("name")
     public String name;
-    private String description;
+    private String content;
 
     public String getName() {
         return name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getContent() {
+        return content;
     }
 // Геттери, сеттери та інші методи
 }

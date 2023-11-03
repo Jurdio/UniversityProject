@@ -1,5 +1,6 @@
 package com.example.university.project.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
@@ -25,9 +26,32 @@ public class StartLearnController implements Initializable {
     }
     private void initializeTree(){
         treeView.setRoot(new TreeItem<>("Теми для вивчення"));
-        TreeItem<String> treeItem = TreeBuilder.buildTree();
+        TreeItem<String> treeItem = new TreeBuilder().buildTree();
         treeView.getRoot().getChildren().addAll(treeItem.getChildren());
+        setupTreeViewSelectionHandler();
     }
+    private void setupTreeViewSelectionHandler() {
+        // Додаємо обробник подій для елементів TreeView
+        treeView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                handleTreeViewSelection(newValue);
+            }
+        });
+    }
+    private void handleTreeViewSelection(TreeItem<String> selectedTreeItem) {
+        // Код обробки вибору елементу TreeView
+        String selectedText = selectedTreeItem.getValue();
+        System.out.println("Selected: " + selectedText);
+        for (Topic topic : TreeBuilder.topics){
+            for (Subtopic subtopic : topic.getSubtopics()){
+                if (subtopic.getName().equals(selectedText)){
+                    System.out.println(subtopic.getContent());
+                }
+            }
+        }
+        // Додайте код для виведення тексту відповіgetDescriptionдно до вашого інтерфейсу
+    }
+
 
 
 
