@@ -12,6 +12,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import com.google.gson.Gson;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 
 import java.io.FileReader;
 import java.net.URL;
@@ -22,18 +24,10 @@ public class StartLearnController implements Initializable {
     @FXML
     private TreeView<String> treeView;
     @FXML
-    private TextFlow textFlow;
-    @FXML
-    private Pagination pagination;
-    @FXML
-    private StackPane stackPane;
-    private static final int MAX_CHARS_PER_PAGE = 2500; // Максимальна кількість символів на сторінці
-    private String currentContent = "";
-
-    @Override
+    private WebView webView;
+      @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeTree();
-        setupPagination();
     }
 
     private void initializeTree() {
@@ -41,12 +35,6 @@ public class StartLearnController implements Initializable {
         TreeItem<String> treeItem = new TreeBuilder().buildTree();
         treeView.getRoot().getChildren().addAll(treeItem.getChildren());
         setupTreeViewSelectionHandler();
-    }
-    private void setupPagination() {
-        pagination.setPageFactory(pageIndex -> {
-            createPage(pageIndex);
-            return textFlow;
-        });
     }
 
     private void setupTreeViewSelectionHandler() {
@@ -66,37 +54,14 @@ public class StartLearnController implements Initializable {
             for (Subtopic subtopic : topic.getSubtopics()) {
                 if (subtopic.getName().equals(selectedText)) {
                     System.out.println(subtopic.getContent());
-                    currentContent = subtopic.getContent();
-                    updatePagination();
+                    URL resourceUrl = getClass().getResource(subtopic.getContent());
+                    webView.getEngine().load(resourceUrl.toExternalForm());
                 }
             }
         }
     }
-    private void setTextToTextFlow(String newText) {
-        if (textFlow == null) {
-            textFlow = new TextFlow();
-        }
-        textFlow.getChildren().clear();
-        textFlow.getChildren().add(new Text(newText));
-    }
-    private void createPage(int pageIndex) {
-        int maxCharsPerPage = MAX_CHARS_PER_PAGE;
-        int startIndex = pageIndex * maxCharsPerPage;
-        int endIndex = Math.min(startIndex + maxCharsPerPage, currentContent.length());
-
-        String pageText = currentContent.substring(startIndex, endIndex);
-
-        textFlow.getChildren().clear();
-        Text textNode = new Text(pageText);
-        textFlow.getChildren().add(textNode);
-    }
-    private void updatePagination() {
-        int numPages = (int) Math.ceil((double) currentContent.length() / MAX_CHARS_PER_PAGE);
-        pagination.setPageCount(numPages);
-
-        pagination.setPageFactory(pageIndex -> {
-            createPage(pageIndex);
-            return textFlow;
-        });
+    private void loadContentToWebView(String content) {
+        WebEngine webEngine = webView.getEngine();
+        webEngine.loadContent(content);
     }
 }
