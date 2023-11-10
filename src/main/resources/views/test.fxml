@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@../css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.university.project.controllers.TestController">
+   <children>
+      <Text fill="#00ff44" layoutX="662.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="correctText" text="Правильно">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Text>
+      <Text fill="RED" layoutX="803.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="correctText" text="Неправильно">
+         <font>
+            <Font size="19.0" />
+         </font></Text>
+      <Text id="correctCountText" fx:id="correctCountText" layoutX="687.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text id="incorrectCountText" fx:id="incorrectCountText" layoutX="836.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <VBox layoutX="26.0" layoutY="327.0" prefHeight="247.0" prefWidth="772.0" spacing="20.0">
+         <children>
+            <Text fx:id="questionText" strokeType="OUTSIDE" strokeWidth="0.0" text="Питання" />
+            <RadioButton fx:id="answer1" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton fx:id="answer2" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton fx:id="answer3" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton fx:id="answer4" mnemonicParsing="false" text="RadioButton" />
+            <Button mnemonicParsing="false" onAction="#handleButtonClick" text="Button" />
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>

@@ -77,11 +77,25 @@
     -fx-pref-width: 600;
     -fx-pref-height: 400;
     -fx-text-alignment: justify;
-    -fx-wrap-text: true;
-}
+        -fx-wrap-text: true;
+    }
 .learnButton{
     -fx-pref-height: 50;
     -fx-pref-width: 150;
 }
+#correctCountText {
+    -fx-fill: green; /* Колір тексту для правильних відповідей */
+    -fx-font-weight: bold;
+}
+
+#incorrectCountText {
+    -fx-fill: red; /* Колір тексту для неправильних відповідей */
+    -fx-font-weight: bold;
+}
+.correctText{
+    -fx-font-weight: bold;
+    -fx-font-size: 19;
+}
+
 
 

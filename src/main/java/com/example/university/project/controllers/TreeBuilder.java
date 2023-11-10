@@ -17,7 +17,7 @@ import java.util.List;
 public class TreeBuilder {
     public static List<Topic> topics = parseJson();
     private static List<Topic> parseJson(){
-        File jsonFile = new File("src/main/resources/data.json");
+        File jsonFile = new File("src/main/resources/data/data.json");
         Gson gson = new Gson();
         List<Topic> newList;
 

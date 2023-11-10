@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Main-Class: com.example.university.project.scenes.StartApp
+Class-Path: javafx-media-18.0.2.jar countries-17.0.22.jar ikonli-javafx-
+ 12.3.1.jar javafx-controls-18.0.2.jar javafx-base-18.0.2.jar javafx-con
+ trols-18.0.2-win.jar controlsfx-11.1.1.jar formsfx-core-11.5.0.jar tool
+ box-17.0.22.jar javafx-media-18.0.2-win.jar validatorfx-0.3.1.jar javaf
+ x-web-18.0.2-win.jar javafx-web-18.0.2.jar bootstrapfx-core-0.4.0.jar j
+ avafx-graphics-18.0.2-win.jar javafx-base-18.0.2-win.jar toolboxfx-17.0
+ .28.jar tilesfx-17.1.9.jar ikonli-core-12.3.1.jar gson-2.10.1.jar heatm
+ ap-17.0.9.jar javafx-graphics-18.0.2.jar javafx-fxml-18.0.2.jar javafx-
+ fxml-18.0.2-win.jar
+
