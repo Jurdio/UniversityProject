@@ -19,7 +19,7 @@ public class AboutUsController {
     @FXML
     public void backToMenu(ActionEvent event) throws Exception {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        new Menu().start(stage);
+
     }
     /**
      * Exits the application.

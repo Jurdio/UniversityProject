@@ -17,15 +17,19 @@
          </font></Text>
       <Text id="correctCountText" fx:id="correctCountText" layoutX="687.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
       <Text id="incorrectCountText" fx:id="incorrectCountText" layoutX="836.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <VBox layoutX="26.0" layoutY="327.0" prefHeight="247.0" prefWidth="772.0" spacing="20.0">
+      <VBox layoutX="31.0" layoutY="308.0" prefHeight="247.0" prefWidth="772.0" spacing="20.0">
          <children>
             <Text fx:id="questionText" strokeType="OUTSIDE" strokeWidth="0.0" text="Питання" />
             <RadioButton fx:id="answer1" mnemonicParsing="false" text="RadioButton" />
             <RadioButton fx:id="answer2" mnemonicParsing="false" text="RadioButton" />
             <RadioButton fx:id="answer3" mnemonicParsing="false" text="RadioButton" />
             <RadioButton fx:id="answer4" mnemonicParsing="false" text="RadioButton" />
-            <Button mnemonicParsing="false" onAction="#handleButtonClick" text="Button" />
+            <Button fx:id="answerButton" mnemonicParsing="false" onAction="#handleButtonClick" text="Відповісти"/>
          </children>
+         <Button fx:id="backToMenuButton" mnemonicParsing="false" onAction="#switchToMenu" text="Повернутись до менню" />
       </VBox>
+      <ProgressBar fx:id="timerProgressBar" layoutX="678.0" layoutY="160.0" prefHeight="23.0" prefWidth="265.0" progress="1.0" />
+      <Button fx:id="startButton" mnemonicParsing="false" text="Старт" />
+
    </children>
 </AnchorPane>

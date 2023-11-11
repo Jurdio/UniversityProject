@@ -9,8 +9,10 @@ public class StartApp extends Application {
     public static void main(String[] args) {
         launch();
     }
+
+
     @Override
     public void start(Stage stage) throws Exception {
-        new Menu().start(stage);
+        Menu.getInstance().start(stage);
     }
 }

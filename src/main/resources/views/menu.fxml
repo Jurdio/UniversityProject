@@ -26,7 +26,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button id="gps" mnemonicParsing="false" onAction="#switchToStartLearn" prefHeight="74.0" prefWidth="247.0" text="START LEARN">
+                        <Button id="gps" mnemonicParsing="false" prefHeight="74.0" prefWidth="247.0" text="START LEARN">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
