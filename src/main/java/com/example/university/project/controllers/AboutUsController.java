@@ -19,6 +19,7 @@ public class AboutUsController {
     @FXML
     public void backToMenu(ActionEvent event) throws Exception {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Menu.getInstance().start(stage);
 
     }
     /**

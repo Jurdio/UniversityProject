@@ -8,10 +8,9 @@ public class StartLearn extends Scene {
     private StartLearn(){
         super("/views/startLearn.fxml");
     }
-
     @Override
     public void start(Stage stage) throws Exception {
-
+        loadScene(stage);
     }
     public static synchronized StartLearn getInstance() {
         if (instance == null) {

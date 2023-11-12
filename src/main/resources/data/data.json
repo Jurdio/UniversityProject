@@ -4,15 +4,15 @@
     "subtopics": [
       {
         "name": "Архітектура фон-Неймана",
-        "content" : "/file.html"
+        "content" : "/index.html"
       },
       {
         "name": "Гарвардська архітектура",
-        "content" : "/file.html"
+        "content" : "/file2.html"
       },
       {
         "name": "Гібридні модифікації з архітектурою фон - Неймана",
-        "content": "/file2.html"
+        "content": "/index.html"
       }
     ]
   },
@@ -25,7 +25,7 @@
       },
       {
         "name": "Паралельна архітектура.",
-        "content": "/file2.html"
+        "content": "/index.html"
       },
       {
         "name": "Закон Амдала.",

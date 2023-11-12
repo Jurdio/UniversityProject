@@ -3,14 +3,20 @@ package com.example.university.project.scenes;
 import javafx.stage.Stage;
 
 public class AboutUs extends Scene {
-
-
-    public AboutUs(String path) {
-        super(path);
+    private static AboutUs instance;
+    private AboutUs() {
+        super("/views/aboutUs.fxml");
     }
-
     @Override
     public void start(Stage stage) throws Exception {
-
+        loadScene(stage);
     }
+    public static synchronized AboutUs getInstance() {
+        if (instance == null) {
+            instance = new AboutUs();
+        }
+        return instance;
+    }
+
+
 }

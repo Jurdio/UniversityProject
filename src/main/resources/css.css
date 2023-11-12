@@ -71,7 +71,7 @@
 }
 #treeView{
     -fx-pref-width: inherit;
-    -fx-pref-height: inherit;
+    -fx-pref-height: 500;
 }
 #textFlow{
     -fx-pref-width: 600;
@@ -95,6 +95,22 @@
 .correctText{
     -fx-font-weight: bold;
     -fx-font-size: 19;
+}
+.buttonGroup{
+    -fx-pref-width: inherit;
+    -fx-pref-height: 100;
+}
+#testBtn{
+    -fx-pref-width: inherit;
+    -fx-pref-height: 45;
+}
+#webView{
+    -fx-pref-width: inherit;
+    -fx-pref-height: inherit;
+}
+#leftV{
+    -fx-pref-width: inherit;
+    -fx-pref-height: inherit;
 }
 
 

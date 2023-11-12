@@ -116,12 +116,14 @@ public class TestController implements Initializable, BaseController { @FXML
     }
 
     private void startTest() {
-        correctCount = 0;
-        incorrectCount = 0;
         enableQuestions();
         startButton.setDisable(true);  // Вимикаємо кнопку "Старт" після початку тесту
         isTestRunning = true;  // Встановлюємо прапорець, що тест розпочався
         showQuestionAndStartTimer(0);
+        correctCount = 0;
+        incorrectCount = 0;
+        correctCountText.setText(String.valueOf(correctCount));
+        incorrectCountText.setText(String.valueOf(incorrectCount));
     }
 
     private void disableQuestions() {
@@ -129,6 +131,7 @@ public class TestController implements Initializable, BaseController { @FXML
             radioButton.setDisable(true);
         }
         answerButton.setDisable(true);
+
 
     }
 
@@ -165,6 +168,7 @@ public class TestController implements Initializable, BaseController { @FXML
 
             String resultMessage = String.format("Правильних відповідей: %d\nНеправильних відповідей: %d", correctCount, incorrectCount);
             alert.setContentText(resultMessage);
+
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {

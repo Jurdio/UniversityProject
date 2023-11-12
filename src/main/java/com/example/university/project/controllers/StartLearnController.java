@@ -1,8 +1,11 @@
 package com.example.university.project.controllers;
 
+import com.example.university.project.scenes.Menu;
+import com.example.university.project.scenes.Test;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TreeItem;
@@ -14,6 +17,7 @@ import javafx.scene.text.TextFlow;
 import com.google.gson.Gson;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 
 import java.io.FileReader;
 import java.net.URL;
@@ -60,8 +64,14 @@ public class StartLearnController implements Initializable {
             }
         }
     }
-    private void loadContentToWebView(String content) {
-        WebEngine webEngine = webView.getEngine();
-        webEngine.loadContent(content);
+    @FXML
+    private void switchToMenu(ActionEvent event) throws Exception{
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Menu.getInstance().start(stage);
+    }
+    @FXML
+    public void switchToTest(ActionEvent event) throws Exception {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Test.getInstance().start(stage);
     }
 }
