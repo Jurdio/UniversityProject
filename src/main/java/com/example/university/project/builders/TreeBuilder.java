@@ -1,17 +1,16 @@
-package com.example.university.project.controllers;
+package com.example.university.project.builders;
 
+import com.example.university.project.jsonObjects.Subtopic;
+import com.example.university.project.jsonObjects.Topic;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 public class TreeBuilder {

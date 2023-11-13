@@ -15,4 +15,8 @@ module com.example.univesity_project {
     exports com.example.university.project.controllers;
     opens com.example.university.project.controllers to javafx.fxml, com.google.gson;
     opens com.example.university.project.scenes to javafx.fxml;
+    exports com.example.university.project.jsonObjects;
+    opens com.example.university.project.jsonObjects to com.google.gson, javafx.fxml;
+    exports com.example.university.project.builders;
+    opens com.example.university.project.builders to com.google.gson, javafx.fxml;
 }

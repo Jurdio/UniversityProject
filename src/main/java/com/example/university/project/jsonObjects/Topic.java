@@ -1,7 +1,6 @@
-package com.example.university.project.controllers;
+package com.example.university.project.jsonObjects;
 
 import com.google.gson.annotations.SerializedName;
-import javafx.scene.control.TreeItem;
 
 import java.util.List;
 

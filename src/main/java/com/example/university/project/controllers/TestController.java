@@ -1,15 +1,13 @@
 package com.example.university.project.controllers;
 
+import com.example.university.project.jsonObjects.Question;
 import com.example.university.project.scenes.Menu;
-import com.example.university.project.scenes.Test;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -17,19 +15,18 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
-import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.*;
 
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.util.Collections;
@@ -100,7 +97,7 @@ public class TestController implements Initializable, BaseController { @FXML
             radioButton.setToggleGroup(toggleGroup);
         }
 
-        questions = loadQuestionsFromJson("src/main/resources/data/questions.json");
+        questions = loadQuestionsFromJson("/data/questions.json");
         startButton.setDisable(false);
 
         if (!questions.isEmpty()) {
@@ -250,14 +247,18 @@ public class TestController implements Initializable, BaseController { @FXML
     }
 
     private List<Question> loadQuestionsFromJson(String filePath) {
-        try (FileReader reader = new FileReader(filePath)) {
+        try (InputStream inputStream = getClass().getResourceAsStream(filePath);
+             InputStreamReader reader = new InputStreamReader(inputStream)) {
+
             Gson gson = new Gson();
             return gson.fromJson(reader, new TypeToken<List<Question>>() {}.getType());
+
         } catch (IOException e) {
             e.printStackTrace();
             return Collections.emptyList();
         }
     }
+
 
     @Override
     public void setStage(Stage stage) {

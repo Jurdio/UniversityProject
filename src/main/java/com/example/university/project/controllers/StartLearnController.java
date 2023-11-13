@@ -1,27 +1,24 @@
 package com.example.university.project.controllers;
 
+import com.example.university.project.builders.TreeBuilder;
+import com.example.university.project.jsonObjects.Subtopic;
+import com.example.university.project.jsonObjects.Topic;
 import com.example.university.project.scenes.Menu;
 import com.example.university.project.scenes.Test;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Pagination;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
-import com.google.gson.Gson;
-import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
-import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class StartLearnController implements Initializable {
@@ -54,16 +51,35 @@ public class StartLearnController implements Initializable {
         // Код обробки вибору елементу TreeView
         String selectedText = selectedTreeItem.getValue();
         System.out.println("Selected: " + selectedText);
+
         for (Topic topic : TreeBuilder.topics) {
             for (Subtopic subtopic : topic.getSubtopics()) {
                 if (subtopic.getName().equals(selectedText)) {
                     System.out.println(subtopic.getContent());
-                    URL resourceUrl = getClass().getResource(subtopic.getContent());
-                    webView.getEngine().load(resourceUrl.toExternalForm());
+
+                    // Використовуйте try-with-resources для автоматичного закриття потоків
+                    try (InputStream inputStream = getClass().getResourceAsStream(subtopic.getContent());
+                         InputStreamReader reader = new InputStreamReader(inputStream);
+                         BufferedReader bufferedReader = new BufferedReader(reader)) {
+
+                        // Читайте вміст файлу рядок за рядком
+                        StringBuilder content = new StringBuilder();
+                        String line;
+                        while ((line = bufferedReader.readLine()) != null) {
+                            content.append(line).append(System.lineSeparator());
+                        }
+
+                        // Завантажте вміст до WebView
+                        webView.getEngine().loadContent(content.toString());
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
     }
+
     @FXML
     private void switchToMenu(ActionEvent event) throws Exception{
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
