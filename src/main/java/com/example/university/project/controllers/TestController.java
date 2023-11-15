@@ -1,6 +1,7 @@
 package com.example.university.project.controllers;
 
 import com.example.university.project.jsonObjects.Question;
+import com.example.university.project.scenes.ConsoleTimer;
 import com.example.university.project.scenes.Menu;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -14,6 +15,8 @@ import javafx.scene.Node;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.animation.KeyValue;
 
@@ -32,9 +35,8 @@ import javafx.scene.control.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
-
-
-public class TestController implements Initializable, BaseController { @FXML
+public class TestController implements Initializable, BaseController {
+    @FXML
     private RadioButton answer1;
     @FXML
     private RadioButton answer2;
@@ -42,6 +44,8 @@ public class TestController implements Initializable, BaseController { @FXML
     private RadioButton answer3;
     @FXML
     private RadioButton answer4;
+    @FXML
+    private ImageView testImage;
     private List<RadioButton> radioButtonList;
     @FXML
     private Text questionText;
@@ -63,10 +67,13 @@ public class TestController implements Initializable, BaseController { @FXML
     private int correctCount;
     private int incorrectCount;
     private double totalTimeInSeconds = 3.0;
+    @FXML
+    private Text timerText;
     private Timeline timerTimeline;
     private Stage endtest;  // Додаємо поле для доступу до вікна
     private Stage stage;
     private boolean isTestRunning = false;  // Додаємо флаг, щоб слідкувати за станом тесту
+    private ConsoleTimer consoleTimer;
 
     @FXML
     private Button backToMenuButton;
@@ -150,6 +157,7 @@ public class TestController implements Initializable, BaseController { @FXML
         }
     }
     private void stopTest() {
+        consoleTimer.stopTimer();
         timerTimeline.stop();
         enableQuestions();
         startButton.setDisable(false);  // Активуємо кнопку "Старт" після завершення тесту
@@ -177,6 +185,7 @@ public class TestController implements Initializable, BaseController { @FXML
     private void resetTimer() {
         if (timerTimeline != null) {
             timerTimeline.stop();
+            consoleTimer.stopTimer();
         }
 
         timerProgressBar.setProgress(1.0);
@@ -184,8 +193,9 @@ public class TestController implements Initializable, BaseController { @FXML
     }
 
     private void initializeTimer() {
+        consoleTimer = new ConsoleTimer();
         timerTimeline = new Timeline(
-                new KeyFrame(Duration.seconds(totalTimeInSeconds), new KeyValue(timerProgressBar.progressProperty(), 0))
+                new KeyFrame(Duration.seconds(consoleTimer.getTotalSeconds()), new KeyValue(timerProgressBar.progressProperty(), 0))
         );
 
         timerTimeline.setOnFinished(event -> handleTimerFinish());
@@ -196,6 +206,9 @@ public class TestController implements Initializable, BaseController { @FXML
         if (timerTimeline.getStatus() != Animation.Status.RUNNING) {
             timerTimeline.playFromStart();
         }
+        consoleTimer.startTimer();
+
+
     }
 
     private void handleTimerFinish() {
@@ -206,6 +219,8 @@ public class TestController implements Initializable, BaseController { @FXML
     private void showQuestion(int questionIndex) {
         Question currentQuestion = questions.get(questionIndex);
         questionText.setText(currentQuestion.getText());
+        Image image = new Image(getClass().getResourceAsStream(currentQuestion.getPathToImage()));
+        testImage.setImage(image);
 
         List<String> options = currentQuestion.getOptions();
         for (int i = 0; i < radioButtonList.size() && i < options.size(); i++) {
