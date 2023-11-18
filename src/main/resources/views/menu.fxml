@@ -30,7 +30,7 @@
          </HBox>
          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
             <Button mnemonicParsing="false" onAction="#switchToStartLearn" prefHeight="74.0" prefWidth="247.0"
-                    text="START LEARN">
+                    text="Матеріали для вивчення">
                <HBox.margin>
                   <Insets/>
                </HBox.margin>
@@ -40,21 +40,21 @@
             </Button>
          </HBox>
          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-            <Button fx:id="testButton" mnemonicParsing="false" onAction="#switchToTest" text="TEST">
+            <Button fx:id="testButton" mnemonicParsing="false" onAction="#switchToTest" text="Тестування">
                <font>
                   <Font name="System Bold" size="15.0"/>
                </font>
             </Button>
          </HBox>
          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-            <Button mnemonicParsing="false" onAction="#switchToAboutUs" text="ABOUT US">
+            <Button mnemonicParsing="false" onAction="#switchToAboutUs" text="Про нас">
                <font>
                   <Font name="System Bold" size="15.0"/>
                </font>
             </Button>
          </HBox>
          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exit" text="EXIT">
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exit" text="Вихід">
                <font>
                   <Font name="System Bold" size="15.0"/>
                </font>

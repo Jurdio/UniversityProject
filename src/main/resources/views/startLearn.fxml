@@ -11,12 +11,12 @@
          <VBox id="leftV" alignment="TOP_CENTER" prefHeight="385.0" prefWidth="250.0" stylesheets="@../css.css">
             <children>
                <TreeView id="treeView" fx:id="treeView" prefHeight="506.0" />
-               <Button id="testBtn" mnemonicParsing="false" text="Test" onAction="#switchToTest">
+               <Button id="testBtn" mnemonicParsing="false" text="Тестування" onAction="#switchToTest">
                   <VBox.margin>
                      <Insets top="5.0" />
                   </VBox.margin>
                </Button>
-               <Button id="testBtn" contentDisplay="CENTER" mnemonicParsing="false" text="Menu" onAction="#switchToMenu">
+               <Button id="testBtn" contentDisplay="CENTER" mnemonicParsing="false" text="Меню" onAction="#switchToMenu">
                   <VBox.margin>
                      <Insets bottom="5.0" top="5.0" />
                   </VBox.margin>

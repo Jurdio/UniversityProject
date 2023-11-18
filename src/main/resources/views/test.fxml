@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@../css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.university.project.controllers.TestController">
    <children>
-      <Text fx:id="timerText" layoutX="890.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="timerText" layoutX="890.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00" />
       <Text fill="#00ff44" layoutX="643.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="correctText" text="Правильно">
          <font>
             <Font name="System Bold" size="19.0" />
@@ -24,10 +24,10 @@
       <VBox layoutX="23.0" layoutY="239.0" prefHeight="286.0" prefWidth="582.0" spacing="20.0">
          <children>
             <Text fx:id="questionText" strokeType="OUTSIDE" strokeWidth="0.0" text="Питання" />
-            <RadioButton fx:id="answer1" mnemonicParsing="false" text="RadioButton" />
-            <RadioButton fx:id="answer2" mnemonicParsing="false" text="RadioButton" />
-            <RadioButton fx:id="answer3" mnemonicParsing="false" text="RadioButton" />
-            <RadioButton fx:id="answer4" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton fx:id="answer1" mnemonicParsing="false" text="Відповідь" />
+            <RadioButton fx:id="answer2" mnemonicParsing="false" text="Відповідь" />
+            <RadioButton fx:id="answer3" mnemonicParsing="false" text="Відповідь" />
+            <RadioButton fx:id="answer4" mnemonicParsing="false" text="Відповідь" />
             <Button fx:id="answerButton" mnemonicParsing="false" onAction="#handleButtonClick" text="Відповісти" />
             <Button fx:id="startButton" maxHeight="50.0" mnemonicParsing="false" prefHeight="50.0" text="Старт" />
             <Button fx:id="backToMenuButton" mnemonicParsing="false" onAction="#switchToMenu" text="Повернутись до меню" />
