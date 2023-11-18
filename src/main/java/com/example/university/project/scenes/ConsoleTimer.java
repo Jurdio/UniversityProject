@@ -4,13 +4,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class ConsoleTimer {
-    private int totalSeconds = 120;
+    private int totalSeconds = 5;
     private Timer timer;
-
     public int getTotalSeconds() {
         return totalSeconds;
     }
-
     public void startTimer() {
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -25,19 +23,16 @@ public class ConsoleTimer {
             }
         }, 0, 1000);  // Update every second
     }
-
     public void stopTimer() {
         if (timer != null) {
             timer.cancel();
         }
     }
-
     private void updateTimerText() {
         int minutes = totalSeconds / 60;
         int seconds = totalSeconds % 60;
         System.out.printf(":%02d:%02d%n", minutes, seconds);
     }
-
     private void handleTimerFinish() {
         System.out.println("Time's up!");
         stopTimer();

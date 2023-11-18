@@ -81,6 +81,7 @@ public class TestController implements Initializable, BaseController {
     private void switchToMenu(ActionEvent event) throws Exception {
         // Скасувати таймер тесту
         timerTimeline.stop();
+        consoleTimer.stopTimer();
 
         // Очистити лічильники правильних та неправильних відповідей
         correctCount = 0;
@@ -96,7 +97,6 @@ public class TestController implements Initializable, BaseController {
         Menu.getInstance().start(stage);
 
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         radioButtonList = List.of(answer1, answer2, answer3, answer4);
@@ -118,7 +118,6 @@ public class TestController implements Initializable, BaseController {
             });
         }
     }
-
     private void startTest() {
         enableQuestions();
         startButton.setDisable(true);  // Вимикаємо кнопку "Старт" після початку тесту
@@ -129,23 +128,18 @@ public class TestController implements Initializable, BaseController {
         correctCountText.setText(String.valueOf(correctCount));
         incorrectCountText.setText(String.valueOf(incorrectCount));
     }
-
     private void disableQuestions() {
         for (RadioButton radioButton : radioButtonList) {
             radioButton.setDisable(true);
         }
         answerButton.setDisable(true);
-
-
     }
-
     private void enableQuestions() {
         for (RadioButton radioButton : radioButtonList) {
             radioButton.setDisable(false);
         }
         answerButton.setDisable(false);
     }
-
     private void showQuestionAndStartTimer(int questionIndex) {
         if (questionIndex < questions.size()) {
             resetTimer();
@@ -181,41 +175,50 @@ public class TestController implements Initializable, BaseController {
             }
         });
     }
-
     private void resetTimer() {
         if (timerTimeline != null) {
             timerTimeline.stop();
             consoleTimer.stopTimer();
         }
-
         timerProgressBar.setProgress(1.0);
         initializeTimer();
     }
-
     private void initializeTimer() {
         consoleTimer = new ConsoleTimer();
         timerTimeline = new Timeline(
                 new KeyFrame(Duration.seconds(consoleTimer.getTotalSeconds()), new KeyValue(timerProgressBar.progressProperty(), 0))
         );
-
         timerTimeline.setOnFinished(event -> handleTimerFinish());
         timerTimeline.setCycleCount(1);
     }
-
     private void startTimer() {
         if (timerTimeline.getStatus() != Animation.Status.RUNNING) {
             timerTimeline.playFromStart();
         }
         consoleTimer.startTimer();
-
-
     }
-
     private void handleTimerFinish() {
-        System.out.println("Time's up!");
+        System.out.println("Час на питання вийшов!");
+        RadioButton selectedRadioButton = (RadioButton) toggleGroup.getSelectedToggle();
+
+        if (isTestRunning) {
+            if (selectedRadioButton != null) {
+                String userAnswer = selectedRadioButton.getText();
+
+                Question currentQuestion = questions.get(currentQuestionIndex);
+                if (currentQuestion.isCorrectAnswer(userAnswer)) {
+                    correctCount++;
+                } else {
+                    incorrectCount++;
+                }
+            } else {
+                System.out.println("Відповідь не вибрана, зараховане як не правильне!");
+                incorrectCount++;
+            }
+        }
+        updateCounters();
         showQuestionAndStartTimer(currentQuestionIndex + 1);
     }
-
     private void showQuestion(int questionIndex) {
         Question currentQuestion = questions.get(questionIndex);
         questionText.setText(currentQuestion.getText());
@@ -230,7 +233,6 @@ public class TestController implements Initializable, BaseController {
         toggleGroup.selectToggle(null);
         currentQuestionIndex = questionIndex;
     }
-
     @FXML
     private void handleButtonClick() {
         RadioButton selectedRadioButton = (RadioButton) toggleGroup.getSelectedToggle();
