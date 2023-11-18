@@ -47,7 +47,7 @@
             </HBox>
             <HBox alignment="TOP_RIGHT" prefHeight="35.0" prefWidth="200.0">
                <children>
-                  <Text fx:id="timerText" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00">
+                  <Text fx:id="timerText" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00:00" wrappingWidth="55.595703125">
                      <HBox.margin>
                         <Insets right="55.0" />
                      </HBox.margin>

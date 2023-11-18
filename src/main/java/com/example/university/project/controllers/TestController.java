@@ -65,7 +65,6 @@ public class TestController implements Initializable {
     private int currentQuestionIndex;
     private int correctCount;
     private int incorrectCount;
-    private double totalTimeInSeconds = 3.0;
     @FXML
     private Text timerText;
     private Timeline timerTimeline;
@@ -274,39 +273,57 @@ public class TestController implements Initializable {
         }
     }
     public class ConsoleTimer {
-        private int totalSeconds = 5;
+        private int totalMilliseconds = 5000;  // Загальний час в мілісекундах
         private Timer timer;
-        public int getTotalSeconds() {
-            return totalSeconds;
+
+        public int getTotalMilliseconds() {
+            return totalMilliseconds;
         }
+        public int getTotalSeconds(){
+            return (totalMilliseconds / 1000) % 60;
+        }
+
         public void startTimer() {
             timer = new Timer();
             timer.scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
-                    if (totalSeconds > 0) {
-                        totalSeconds--;
+                    if (totalMilliseconds > 0) {
+                        totalMilliseconds--;
                         updateTimerText();
                     } else {
                         handleTimerFinish();
                     }
                 }
-            }, 0, 1000);  // Update every second
+            }, 0, 1);  // Оновлення кожну мілісекунду (1 мілісекунда)
         }
+
         public void stopTimer() {
             if (timer != null) {
                 timer.cancel();
             }
         }
+
         private void updateTimerText() {
-            int minutes = totalSeconds / 60;
-            int seconds = totalSeconds % 60;
-            String formattedTime = String.format("%02d:%02d", minutes, seconds);
+            int minutes = totalMilliseconds / (1000 * 60);
+            int seconds = (totalMilliseconds / 1000) % 60;
+            int milliseconds = totalMilliseconds % 1000;
+            String formattedTime = String.format("%02d:%02d:%02d", minutes, seconds, milliseconds);
             System.out.println(formattedTime);
-            timerText.setText(formattedTime);
+            Platform.runLater(() -> {
+                // Оновлення інтерфейсу з потока JavaFX Application Thread
+                timerText.setText(formattedTime);
+            });
         }
+
         private void handleTimerFinish() {
-            stopTimer();
+            try {
+                stopTimer();
+                System.out.println("Таймер завершено!");
+                // Деякі ваші інші дії після завершення таймера
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
