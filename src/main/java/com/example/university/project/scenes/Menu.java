@@ -1,8 +1,5 @@
 package com.example.university.project.scenes;
 
-import com.example.university.project.controllers.MenuController;
-import com.example.university.project.controllers.TestController;
-import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 
 public class Menu extends Scene {

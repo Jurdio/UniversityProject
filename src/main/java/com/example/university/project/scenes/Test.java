@@ -16,7 +16,6 @@ public class Test extends Scene{
         }
         return instance;
     }
-
     @Override
     public void start(Stage stage) throws Exception {
         loadScene(stage);

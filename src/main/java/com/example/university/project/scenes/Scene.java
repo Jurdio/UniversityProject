@@ -1,6 +1,5 @@
 package com.example.university.project.scenes;
 
-import com.example.university.project.controllers.BaseController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,8 +12,6 @@ import java.io.IOException;
  */
 public abstract class Scene extends Application {
     protected String path;
-
-
     public Scene(String path) {
         this.path = path;
     }

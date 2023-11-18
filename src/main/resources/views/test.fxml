@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -8,33 +9,95 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@../css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.university.project.controllers.TestController">
    <children>
-      <Text fx:id="timerText" layoutX="890.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00" />
-      <Text fill="#00ff44" layoutX="643.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="correctText" text="Правильно">
-         <font>
-            <Font name="System Bold" size="19.0" />
-         </font>
-      </Text>
-      <Text fill="RED" layoutX="803.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="correctText" text="Неправильно">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Text>
-      <Text id="correctCountText" fx:id="correctCountText" layoutX="687.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <Text id="incorrectCountText" fx:id="incorrectCountText" layoutX="836.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <VBox layoutX="23.0" layoutY="239.0" prefHeight="286.0" prefWidth="582.0" spacing="20.0">
+      <VBox alignment="TOP_CENTER" layoutX="645.0" prefHeight="600.0" prefWidth="355.0">
          <children>
-            <Text fx:id="questionText" strokeType="OUTSIDE" strokeWidth="0.0" text="Питання" />
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <Text fill="#00ff44" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="correctText" text="Правильно">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="25.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="correctText" text="Неправильно">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="30.0" prefWidth="200.0">
+               <children>
+                  <Text id="correctCountText" fx:id="correctCountText" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                     <HBox.margin>
+                        <Insets right="150.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Text id="incorrectCountText" fx:id="incorrectCountText" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                     <HBox.margin>
+                        <Insets left="-10.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_RIGHT" prefHeight="35.0" prefWidth="200.0">
+               <children>
+                  <Text fx:id="timerText" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00">
+                     <HBox.margin>
+                        <Insets right="55.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </HBox>
+            <ProgressBar fx:id="timerProgressBar" prefHeight="23.0" prefWidth="290.0" progress="1.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="340.0" prefWidth="301.0">
+                     <children>
+                        <Button fx:id="startButton" maxHeight="50.0" mnemonicParsing="false" prefHeight="50.0" text="Старт">
+                           <VBox.margin>
+                              <Insets top="250.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="backToMenuButton" mnemonicParsing="false" onAction="#switchToMenu" text="Повернутись до меню">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="14.0" layoutY="11.0" prefHeight="575.0" prefWidth="582.0" spacing="20.0">
+         <children>
+            <ImageView fx:id="testImage" fitHeight="251.0" fitWidth="586.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="questionText" strokeType="OUTSIDE" strokeWidth="0.0" text="Питання" wrappingWidth="600.0517578125">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></Text>
             <RadioButton fx:id="answer1" mnemonicParsing="false" text="Відповідь" />
             <RadioButton fx:id="answer2" mnemonicParsing="false" text="Відповідь" />
             <RadioButton fx:id="answer3" mnemonicParsing="false" text="Відповідь" />
             <RadioButton fx:id="answer4" mnemonicParsing="false" text="Відповідь" />
             <Button fx:id="answerButton" mnemonicParsing="false" onAction="#handleButtonClick" text="Відповісти" />
-            <Button fx:id="startButton" maxHeight="50.0" mnemonicParsing="false" prefHeight="50.0" text="Старт" />
-            <Button fx:id="backToMenuButton" mnemonicParsing="false" onAction="#switchToMenu" text="Повернутись до меню" />
          </children>
       </VBox>
-      <ProgressBar fx:id="timerProgressBar" layoutX="662.0" layoutY="160.0" prefHeight="23.0" prefWidth="265.0" progress="1.0" />
-      <ImageView fx:id="testImage" fitHeight="206.0" fitWidth="582.0" layoutX="23.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 
 </AnchorPane>

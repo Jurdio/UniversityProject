@@ -34,7 +34,7 @@ import javafx.scene.control.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
-public class TestController implements Initializable, BaseController {
+public class TestController implements Initializable {
     @FXML
     private RadioButton answer1;
     @FXML
@@ -95,6 +95,7 @@ public class TestController implements Initializable, BaseController {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        questionText.setWrappingWidth(600);
         radioButtonList = List.of(answer1, answer2, answer3, answer4);
         for (RadioButton radioButton : radioButtonList){
             radioButton.setToggleGroup(toggleGroup);
@@ -113,9 +114,6 @@ public class TestController implements Initializable, BaseController {
                 }
             });
         }
-    }
-    public void setTextTimer(StringProperty string){
-        timerText.setText(String.valueOf(string));
     }
     private void startTest() {
         enableQuestions();
@@ -275,13 +273,6 @@ public class TestController implements Initializable, BaseController {
             return Collections.emptyList();
         }
     }
-
-
-    @Override
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
     public class ConsoleTimer {
         private int totalSeconds = 5;
         private Timer timer;
