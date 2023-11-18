@@ -1,7 +1,6 @@
 package com.example.university.project.controllers;
 
 import com.example.university.project.jsonObjects.Question;
-import com.example.university.project.scenes.ConsoleTimer;
 import com.example.university.project.scenes.Menu;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -9,6 +8,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -20,7 +20,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.animation.KeyValue;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -73,10 +72,7 @@ public class TestController implements Initializable, BaseController {
     private Stage endtest;  // Додаємо поле для доступу до вікна
     private Stage stage;
     private boolean isTestRunning = false;  // Додаємо флаг, щоб слідкувати за станом тесту
-    private ConsoleTimer consoleTimer;
-
-    @FXML
-    private Button backToMenuButton;
+    private ConsoleTimer consoleTimer = new ConsoleTimer();
     @FXML
     private void switchToMenu(ActionEvent event) throws Exception {
         // Скасувати таймер тесту
@@ -117,6 +113,9 @@ public class TestController implements Initializable, BaseController {
                 }
             });
         }
+    }
+    public void setTextTimer(StringProperty string){
+        timerText.setText(String.valueOf(string));
     }
     private void startTest() {
         enableQuestions();
@@ -192,6 +191,7 @@ public class TestController implements Initializable, BaseController {
         timerTimeline.setCycleCount(1);
     }
     private void startTimer() {
+
         if (timerTimeline.getStatus() != Animation.Status.RUNNING) {
             timerTimeline.playFromStart();
         }
@@ -280,6 +280,43 @@ public class TestController implements Initializable, BaseController {
     @Override
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public class ConsoleTimer {
+        private int totalSeconds = 5;
+        private Timer timer;
+        public int getTotalSeconds() {
+            return totalSeconds;
+        }
+        public void startTimer() {
+            timer = new Timer();
+            timer.scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run() {
+                    if (totalSeconds > 0) {
+                        totalSeconds--;
+                        updateTimerText();
+                    } else {
+                        handleTimerFinish();
+                    }
+                }
+            }, 0, 1000);  // Update every second
+        }
+        public void stopTimer() {
+            if (timer != null) {
+                timer.cancel();
+            }
+        }
+        private void updateTimerText() {
+            int minutes = totalSeconds / 60;
+            int seconds = totalSeconds % 60;
+            String formattedTime = String.format("%02d:%02d", minutes, seconds);
+            System.out.println(formattedTime);
+            timerText.setText(formattedTime);
+        }
+        private void handleTimerFinish() {
+            stopTimer();
+        }
     }
 }
 
