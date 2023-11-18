@@ -112,6 +112,12 @@
     -fx-pref-width: inherit;
     -fx-pref-height: inherit;
 }
+#testImage{
+    -fx-fit-width: 100%;
+    -fx-fit-height: 100%;
+    -fx-preserve-ratio: true;
+    -fx-smooth: true;
+}
 
 
 

@@ -15,20 +15,20 @@
                <children>
                   <Text fill="#00ff44" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="correctText" text="Правильно">
                      <font>
-                        <Font name="System Bold" size="19.0" />
+                        <Font size="26.0" />
                      </font>
                      <HBox.margin>
-                        <Insets right="25.0" />
+                        <Insets right="35.0" />
                      </HBox.margin>
                   </Text>
                   <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="correctText" text="Неправильно">
                      <font>
-                        <Font size="19.0" />
+                        <Font size="26.0" />
                      </font>
                   </Text>
                </children>
                <VBox.margin>
-                  <Insets top="50.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="30.0" prefWidth="200.0">
@@ -47,29 +47,32 @@
             </HBox>
             <HBox alignment="TOP_RIGHT" prefHeight="35.0" prefWidth="200.0">
                <children>
-                  <Text fx:id="timerText" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00:00" wrappingWidth="55.595703125">
+                  <Text fx:id="timerText" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00:00" wrappingWidth="81.595703125">
                      <HBox.margin>
-                        <Insets right="55.0" />
+                        <Insets right="30.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="22.0" />
+                     </font>
                   </Text>
                </children>
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
             </HBox>
-            <ProgressBar fx:id="timerProgressBar" prefHeight="23.0" prefWidth="290.0" progress="1.0" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <ProgressBar fx:id="timerProgressBar" prefHeight="30.0" prefWidth="300.0" progress="1.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="300.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="340.0" prefWidth="301.0">
+                  <VBox alignment="CENTER" prefHeight="108.0" prefWidth="300.0">
                      <children>
-                        <Button fx:id="startButton" maxHeight="50.0" mnemonicParsing="false" prefHeight="50.0" text="Старт">
+                        <Button fx:id="startButton" maxHeight="50.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="300.0" text="Старт">
                            <VBox.margin>
-                              <Insets top="250.0" />
+                              <Insets bottom="5.0" top="5.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="backToMenuButton" mnemonicParsing="false" onAction="#switchToMenu" text="Повернутись до меню">
+                        <Button fx:id="backToMenuButton" maxHeight="50.0" maxWidth="300.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="50.0" prefWidth="300.0" text="Повернутись до меню">
                            <VBox.margin>
-                              <Insets top="30.0" />
+                              <Insets bottom="5.0" top="5.0" />
                            </VBox.margin>
                         </Button>
                      </children>
@@ -86,7 +89,13 @@
       </VBox>
       <VBox layoutX="14.0" layoutY="11.0" prefHeight="575.0" prefWidth="582.0" spacing="20.0">
          <children>
-            <ImageView fx:id="testImage" fitHeight="251.0" fitWidth="586.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="testImage" fx:id="testImage" fitHeight="251.0" fitWidth="452.0" pickOnBounds="true" preserveRatio="true">
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+               <image>
+                  <Image url="@../images/wp10280191.jpg" />
+               </image></ImageView>
             <Text fx:id="questionText" strokeType="OUTSIDE" strokeWidth="0.0" text="Питання" wrappingWidth="600.0517578125">
                <VBox.margin>
                   <Insets />

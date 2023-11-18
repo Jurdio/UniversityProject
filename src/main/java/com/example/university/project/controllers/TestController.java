@@ -289,13 +289,13 @@ public class TestController implements Initializable {
                 @Override
                 public void run() {
                     if (totalMilliseconds > 0) {
-                        totalMilliseconds--;
+                        totalMilliseconds -= 10;
                         updateTimerText();
                     } else {
                         handleTimerFinish();
                     }
                 }
-            }, 0, 1);  // Оновлення кожну мілісекунду (1 мілісекунда)
+            }, 0, 10);  // Оновлення кожну мілісекунду (1 мілісекунда)
         }
 
         public void stopTimer() {
@@ -308,8 +308,11 @@ public class TestController implements Initializable {
             int minutes = totalMilliseconds / (1000 * 60);
             int seconds = (totalMilliseconds / 1000) % 60;
             int milliseconds = totalMilliseconds % 1000;
-            String formattedTime = String.format("%02d:%02d:%02d", minutes, seconds, milliseconds);
+
+            // Форматування часу у вигляді "00:01:28"
+            String formattedTime = String.format("%02d:%02d:%02d", minutes, seconds, milliseconds / 10);
             System.out.println(formattedTime);
+
             Platform.runLater(() -> {
                 // Оновлення інтерфейсу з потока JavaFX Application Thread
                 timerText.setText(formattedTime);
