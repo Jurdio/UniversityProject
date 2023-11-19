@@ -70,6 +70,7 @@ public class TestController implements Initializable {
     private Timeline timerTimeline;
     private Stage endtest;  // Додаємо поле для доступу до вікна
     private Stage stage;
+    private int nextQuestionIndex; // Додайте це поле класу для збереження індексу наступного питання
     private boolean isTestRunning = false;  // Додаємо флаг, щоб слідкувати за станом тесту
     private ConsoleTimer consoleTimer = new ConsoleTimer();
     @FXML
@@ -104,7 +105,7 @@ public class TestController implements Initializable {
         startButton.setDisable(false);
 
         if (!questions.isEmpty()) {
-            resetTimer();
+            resetTimer(0);
             disableQuestions();
             // Змінюємо обробник для кнопки "Старт"
             startButton.setOnAction(event -> {
@@ -138,7 +139,7 @@ public class TestController implements Initializable {
     }
     private void showQuestionAndStartTimer(int questionIndex) {
         if (questionIndex < questions.size()) {
-            resetTimer();
+            resetTimer(questionIndex + 1);
             showQuestion(questionIndex);
             startTimer();
         } else {
@@ -171,12 +172,13 @@ public class TestController implements Initializable {
             }
         });
     }
-    private void resetTimer() {
+    private void resetTimer(int nextQuestionIndex) {
         if (timerTimeline != null) {
             timerTimeline.stop();
             consoleTimer.stopTimer();
         }
         timerProgressBar.setProgress(1.0);
+        this.nextQuestionIndex = nextQuestionIndex; // Зберегти індекс наступного питання
         initializeTimer();
     }
     private void initializeTimer() {
@@ -188,12 +190,20 @@ public class TestController implements Initializable {
         timerTimeline.setCycleCount(1);
     }
     private void startTimer() {
-
         if (timerTimeline.getStatus() != Animation.Status.RUNNING) {
             timerTimeline.playFromStart();
         }
         consoleTimer.startTimer();
+
+        // Встановлення псевдокласу "urgent" для прогрес-бара, коли залишається 10% часу або менше
+        timerTimeline.currentTimeProperty().addListener((observable, oldValue, newValue) -> {
+            double remainingTime = (consoleTimer.getTotalMilliseconds() - newValue.toMillis()) / consoleTimer.getTotalMilliseconds();
+            if (remainingTime <= 0.1) {
+                timerProgressBar.getStyleClass().add("urgent");
+            }
+        });
     }
+    // Оновлений метод handleTimerFinish, який використовує nextQuestionIndex
     private void handleTimerFinish() {
         System.out.println("Час на питання вийшов!");
         RadioButton selectedRadioButton = (RadioButton) toggleGroup.getSelectedToggle();
@@ -214,14 +224,17 @@ public class TestController implements Initializable {
             }
         }
         updateCounters();
-        showQuestionAndStartTimer(currentQuestionIndex + 1);
+        showQuestionAndStartTimer(nextQuestionIndex);
+        timerProgressBar.getStyleClass().clear(); // Очистити всі класи стилів
+        timerProgressBar.getStyleClass().add("progress-bar"); // Додати клас за замовчуванням
     }
     private void showQuestion(int questionIndex) {
         Question currentQuestion = questions.get(questionIndex);
         questionText.setText(currentQuestion.getText());
         Image image = new Image(getClass().getResourceAsStream(currentQuestion.getPathToImage()));
-        testImage.setImage(image);
-
+        Platform.runLater(() -> {
+            testImage.setImage(image);
+        });
         List<String> options = currentQuestion.getOptions();
         for (int i = 0; i < radioButtonList.size() && i < options.size(); i++) {
             radioButtonList.get(i).setText(options.get(i));

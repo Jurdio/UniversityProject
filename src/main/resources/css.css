@@ -119,14 +119,18 @@
     -fx-pref-height: inherit;
 }
 #testImage{
-    -fx-fit-width: 490px;
-    -fx-fit-height: 100px;
-    -fx-preserve-ratio: true;
-    -fx-smooth: true;
+
+    -fx-min-width: 490.0;
+    -fx-max-width: 490.0;
+    -fx-min-height: 300.0;
+    -fx-max-height: 300.0;
 }
 #answerBtn{
     -fx-pref-width: 245;
     -fx-pref-height: 60;
+}
+.progress-bar.urgent {
+    -fx-accent: red; /* Колір для стану "екстреного" */
 }
 
 
