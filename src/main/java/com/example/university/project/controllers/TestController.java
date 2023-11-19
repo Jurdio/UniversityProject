@@ -6,34 +6,25 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import javafx.animation.KeyValue;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.*;
-
-import javafx.fxml.FXML;
-import javafx.stage.Stage;
-import javafx.util.Duration;
-import javafx.scene.control.*;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
 public class TestController implements Initializable {
     @FXML
     private RadioButton answer1;
@@ -234,9 +225,7 @@ public class TestController implements Initializable {
         Question currentQuestion = questions.get(questionIndex);
         questionText.setText(currentQuestion.getText());
         Image image = new Image(getClass().getResourceAsStream(currentQuestion.getPathToImage()));
-        Platform.runLater(() -> {
-            testImage.setImage(image);
-        });
+        testImage.setImage(image);
         List<String> options = currentQuestion.getOptions();
         for (int i = 0; i < radioButtonList.size() && i < options.size(); i++) {
             radioButtonList.get(i).setText(options.get(i));

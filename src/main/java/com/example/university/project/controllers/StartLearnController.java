@@ -29,6 +29,7 @@ public class StartLearnController implements Initializable {
       @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeTree();
+        webView.getEngine().load(getClass().getResource("/pages/startPage.html").toExternalForm());
     }
 
     private void initializeTree() {
