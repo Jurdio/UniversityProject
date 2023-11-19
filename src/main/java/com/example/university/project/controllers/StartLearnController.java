@@ -69,8 +69,12 @@ public class StartLearnController implements Initializable {
                             content.append(line).append(System.lineSeparator());
                         }
 
-                        // Завантажте вміст до WebView
-                        webView.getEngine().loadContent(content.toString());
+                        // Встановіть базовий URL для завантаження зображень та інших ресурсів
+                        String baseUrl = getClass().getResource("/pages/").toExternalForm();
+
+                        // Завантажте вміст до WebView з використанням базового URL
+                        webView.getEngine().loadContent("<base href='" + baseUrl + "'>" + content.toString());
+
 
                     } catch (IOException e) {
                         e.printStackTrace();

@@ -190,6 +190,8 @@ public class TestController implements Initializable {
         timerTimeline.setCycleCount(1);
     }
     private void startTimer() {
+        timerProgressBar.getStyleClass().clear(); // Очистити всі класи стилів
+        timerProgressBar.getStyleClass().add("progress-bar"); // Додати клас за замовчуванням
         if (timerTimeline.getStatus() != Animation.Status.RUNNING) {
             timerTimeline.playFromStart();
         }

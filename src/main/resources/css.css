@@ -113,6 +113,7 @@
 #webView{
     -fx-pref-width: inherit;
     -fx-pref-height: inherit;
+    -fx-padding: 50 50 50 50px;
 }
 #leftV{
     -fx-pref-width: inherit;
