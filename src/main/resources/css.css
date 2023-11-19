@@ -83,18 +83,24 @@
     -fx-pref-height: 50;
     -fx-pref-width: 150;
 }
-#correctCountText {
-    -fx-fill: green; /* Колір тексту для правильних відповідей */
+
+.correctCountText {
+    -fx-text-fill: #00B831;
+    -fx-font-family: "Inter";
+    -fx-font-size: 24px;
+    -fx-font-style: normal;
     -fx-font-weight: bold;
+    -fx-line-height: normal;
 }
 
-#incorrectCountText {
-    -fx-fill: red; /* Колір тексту для неправильних відповідей */
-    -fx-font-weight: bold;
-}
-.correctText{
-    -fx-font-weight: bold;
-    -fx-font-size: 19;
+
+.incorrectCountText {
+    color: #A10101;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 .buttonGroup{
     -fx-pref-width: inherit;
@@ -113,10 +119,14 @@
     -fx-pref-height: inherit;
 }
 #testImage{
-    -fx-fit-width: 100%;
-    -fx-fit-height: 100%;
+    -fx-fit-width: 490px;
+    -fx-fit-height: 100px;
     -fx-preserve-ratio: true;
     -fx-smooth: true;
+}
+#answerBtn{
+    -fx-pref-width: 245;
+    -fx-pref-height: 60;
 }
 
 

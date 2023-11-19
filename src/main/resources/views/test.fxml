@@ -1,76 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
 <?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@../css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.university.project.controllers.TestController">
+<AnchorPane maxHeight="600.0" maxWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.university.project.controllers.TestController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="645.0" prefHeight="600.0" prefWidth="355.0">
+      <VBox alignment="TOP_CENTER" layoutX="500.0" prefHeight="600.0" prefWidth="500.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+            <HBox prefHeight="50.0" prefWidth="481.0">
                <children>
-                  <Text fill="#00ff44" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="correctText" text="Правильно">
+                  <Text fill="#00ff44" strokeType="OUTSIDE" strokeWidth="0.0" text="Правильно" wrappingWidth="134.7421875">
                      <font>
-                        <Font size="26.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                      <HBox.margin>
-                        <Insets right="35.0" />
+                        <Insets left="50.0" right="35.0" />
                      </HBox.margin>
                   </Text>
-                  <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="correctText" text="Неправильно">
+                  <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Неправильно">
                      <font>
-                        <Font size="26.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="45.0" />
+                     </HBox.margin>
                   </Text>
                </children>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="30.0" prefWidth="200.0">
+            <HBox prefHeight="30.0" prefWidth="479.0">
                <children>
-                  <Text id="correctCountText" fx:id="correctCountText" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                  <Text id="correctCountText" fx:id="correctCountText" fill="#00ff44" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                      <HBox.margin>
-                        <Insets right="150.0" />
+                        <Insets left="110.0" />
                      </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
                   </Text>
-                  <Text id="incorrectCountText" fx:id="incorrectCountText" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                  <Text fx:id="incorrectCountText" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="incorrectCountText" text="0">
                      <HBox.margin>
-                        <Insets left="-10.0" />
+                        <Insets left="213.0" />
                      </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
                   </Text>
                </children>
             </HBox>
             <HBox alignment="TOP_RIGHT" prefHeight="35.0" prefWidth="200.0">
                <children>
-                  <Text fx:id="timerText" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00:00" wrappingWidth="81.595703125">
+                  <Text fx:id="timerText" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00:00" wrappingWidth="98.59570240974426">
                      <HBox.margin>
-                        <Insets right="30.0" />
+                        <Insets right="43.0" />
                      </HBox.margin>
                      <font>
-                        <Font size="22.0" />
+                        <Font size="24.0" />
                      </font>
                   </Text>
                </children>
                <VBox.margin>
-                  <Insets top="30.0" />
+                  <Insets top="31.0" />
                </VBox.margin>
             </HBox>
-            <ProgressBar fx:id="timerProgressBar" prefHeight="30.0" prefWidth="300.0" progress="1.0" />
+            <HBox alignment="CENTER" prefHeight="41.0" prefWidth="479.0">
+               <children>
+                  <ProgressBar fx:id="timerProgressBar" prefHeight="30.0" prefWidth="375.0" progress="1.0" />
+               </children>
+            </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="300.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="108.0" prefWidth="300.0">
                      <children>
-                        <Button fx:id="startButton" maxHeight="50.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="300.0" text="Старт">
+                        <Button fx:id="startButton" maxHeight="30.0" maxWidth="375.0" minHeight="30.0" minWidth="375.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="375.0" text="Почати тестування">
                            <VBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="backToMenuButton" maxHeight="50.0" maxWidth="300.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="50.0" prefWidth="300.0" text="Повернутись до меню">
+                        <Button fx:id="backToMenuButton" maxHeight="30.0" maxWidth="375.0" minHeight="30.0" minWidth="375.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="30.0" prefWidth="375.0" text="Повернутись до меню">
                            <VBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </VBox.margin>
@@ -86,26 +99,52 @@
                </VBox.margin>
             </HBox>
          </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
       </VBox>
-      <VBox layoutX="14.0" layoutY="11.0" prefHeight="575.0" prefWidth="582.0" spacing="20.0">
+      <VBox maxHeight="600.0" maxWidth="500.0" minHeight="600.0" minWidth="500.0" prefHeight="600.0" prefWidth="500.0">
          <children>
-            <ImageView id="testImage" fx:id="testImage" fitHeight="251.0" fitWidth="452.0" pickOnBounds="true" preserveRatio="true">
-               <viewport>
-                  <Rectangle2D />
-               </viewport>
-               <image>
-                  <Image url="@../images/wp10280191.jpg" />
-               </image></ImageView>
-            <Text fx:id="questionText" strokeType="OUTSIDE" strokeWidth="0.0" text="Питання" wrappingWidth="600.0517578125">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../css.css">
+               <children>
+                  <ImageView id="testImage" fx:id="testImage" fitHeight="300.0" fitWidth="490.0" pickOnBounds="true" preserveRatio="true">
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                     <image>
+                        <Image url="@../images/wp10280191.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Text fx:id="questionText" strokeType="OUTSIDE" strokeWidth="0.0" text="Питання" wrappingWidth="928.0517578125">
                <VBox.margin>
-                  <Insets />
+                  <Insets top="25.0" />
                </VBox.margin></Text>
-            <RadioButton fx:id="answer1" mnemonicParsing="false" text="Відповідь" />
-            <RadioButton fx:id="answer2" mnemonicParsing="false" text="Відповідь" />
-            <RadioButton fx:id="answer3" mnemonicParsing="false" text="Відповідь" />
-            <RadioButton fx:id="answer4" mnemonicParsing="false" text="Відповідь" />
-            <Button fx:id="answerButton" mnemonicParsing="false" onAction="#handleButtonClick" text="Відповісти" />
+            <RadioButton fx:id="answer1" mnemonicParsing="false" text="Відповідь">
+               <VBox.margin>
+                  <Insets top="25.0" />
+               </VBox.margin></RadioButton>
+            <RadioButton fx:id="answer2" mnemonicParsing="false" text="Відповідь">
+               <VBox.margin>
+                  <Insets top="16.0" />
+               </VBox.margin></RadioButton>
+            <RadioButton fx:id="answer3" mnemonicParsing="false" text="Відповідь">
+               <VBox.margin>
+                  <Insets top="16.0" />
+               </VBox.margin></RadioButton>
+            <RadioButton fx:id="answer4" mnemonicParsing="false" text="Відповідь">
+               <VBox.margin>
+                  <Insets top="16.0" />
+               </VBox.margin></RadioButton>
+            <Button id="answerBtn" fx:id="answerButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="52.0" minWidth="245.0" mnemonicParsing="false" onAction="#handleButtonClick" prefHeight="52.0" prefWidth="245.0" stylesheets="@../css.css" text="Відповісти">
+               <VBox.margin>
+                  <Insets top="25.0" />
+               </VBox.margin></Button>
          </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
       </VBox>
    </children>
 
