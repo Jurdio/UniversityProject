@@ -36,6 +36,7 @@ public class TestController implements Initializable {
     private RadioButton answer4;
     @FXML
     private ImageView testImage;
+    private Image image;
     private List<RadioButton> radioButtonList;
     @FXML
     private Text questionText;
@@ -51,7 +52,6 @@ public class TestController implements Initializable {
     private Button startButton;  // Додаємо кнопку "Старт"
     @FXML
     private Button answerButton;
-
     private List<Question> questions;
     private int currentQuestionIndex;
     private int correctCount;
@@ -110,11 +110,11 @@ public class TestController implements Initializable {
         enableQuestions();
         startButton.setDisable(true);  // Вимикаємо кнопку "Старт" після початку тесту
         isTestRunning = true;  // Встановлюємо прапорець, що тест розпочався
-        showQuestionAndStartTimer(0);
         correctCount = 0;
         incorrectCount = 0;
         correctCountText.setText(String.valueOf(correctCount));
         incorrectCountText.setText(String.valueOf(incorrectCount));
+        showQuestionAndStartTimer(0);
     }
     private void disableQuestions() {
         for (RadioButton radioButton : radioButtonList) {
@@ -224,7 +224,7 @@ public class TestController implements Initializable {
     private void showQuestion(int questionIndex) {
         Question currentQuestion = questions.get(questionIndex);
         questionText.setText(currentQuestion.getText());
-        Image image = new Image(getClass().getResourceAsStream(currentQuestion.getPathToImage()));
+        image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(currentQuestion.getPathToImage())));
         testImage.setImage(image);
         List<String> options = currentQuestion.getOptions();
         for (int i = 0; i < radioButtonList.size() && i < options.size(); i++) {
@@ -277,12 +277,14 @@ public class TestController implements Initializable {
         }
     }
     public class ConsoleTimer {
-        private int totalMilliseconds = 5000;  // Загальний час в мілісекундах
+        private int totalMilliseconds = 1000;  // Загальний час в мілісекундах
+
         private Timer timer;
 
         public int getTotalMilliseconds() {
             return totalMilliseconds;
         }
+
         public int getTotalSeconds(){
             return (totalMilliseconds / 1000) % 60;
         }
