@@ -53,5 +53,16 @@
     ],
     "correctAnswer": "Материнська плата",
     "pathToImage": "/images/IMG1.jpg"
+  },
+  {
+    "text": "У якому році Морзе винайшов телеграфний апарат?",
+    "options": [
+      "1819",
+      "1837",
+      "1900",
+      "2023"
+    ],
+    "correctAnswer": "1837",
+    "pathToImage": "/images/Телеграф морзе.png"
   }
 ]

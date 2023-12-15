@@ -223,10 +223,12 @@ public class TestController implements Initializable {
     }
     private void showQuestion(int questionIndex) {
         Question currentQuestion = questions.get(questionIndex);
-        questionText.setText(currentQuestion.getText());
         image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(currentQuestion.getPathToImage())));
-        testImage.setImage(image);
         List<String> options = currentQuestion.getOptions();
+
+        questionText.setText(currentQuestion.getText());
+        testImage.setImage(image);
+
         for (int i = 0; i < radioButtonList.size() && i < options.size(); i++) {
             radioButtonList.get(i).setText(options.get(i));
         }
