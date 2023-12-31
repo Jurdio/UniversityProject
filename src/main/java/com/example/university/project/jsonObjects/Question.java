@@ -1,5 +1,7 @@
 package com.example.university.project.jsonObjects;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Question {
@@ -17,9 +19,9 @@ public class Question {
     }
 
     public List<String> getOptions() {
+        Collections.shuffle(options);
         return options;
     }
-
     public String getCorrectAnswer() {
         return correctAnswer;
     }

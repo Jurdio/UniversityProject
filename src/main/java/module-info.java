@@ -15,9 +15,18 @@ module com.example.univesity_project {
     exports com.example.university.project.jsonObjects;
     exports com.example.university.project.scenes;
     exports com.example.university.project.controllers;
-    opens com.example.university.project to javafx.fxml;
+
+    opens com.example.university.project to javafx.graphics, javafx.fxml;
+
     opens com.example.university.project.controllers to javafx.fxml, com.google.gson;
     opens com.example.university.project.scenes to javafx.fxml;
     opens com.example.university.project.jsonObjects to com.google.gson, javafx.fxml;
     opens com.example.university.project.builders to com.google.gson, javafx.fxml;
+
+    // Опційно: вказати точку входу для запуску додатка
+    // Додаткові opens та exports, які можуть бути потрібні
+
+    // Опційно: ви можете використовувати цей атрибут, щоб вказати точку входу
+    // до вашого додатка
+    // uses javafx.graphics/javafx.application.Application;
 }
