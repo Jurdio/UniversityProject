@@ -1,20 +1,22 @@
-package com.example.university.project.builders;
+package com.example.university.project.controllers.controllersServices.startLearnControllerServices;
+
 
 import com.example.university.project.jsonObjects.Subtopic;
 import com.example.university.project.jsonObjects.Topic;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import javafx.scene.control.TreeItem;
 
-import java.io.*;
-import java.lang.reflect.Type;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TreeBuilder {
+public class TreeBuilderService {
     public static List<Topic> topics = parseJson();
 
     private static List<Topic> parseJson() {
@@ -22,7 +24,7 @@ public class TreeBuilder {
         Gson gson = new Gson();
 
         // Використовуємо getResourceAsStream() для завантаження ресурсів з JAR-файлу
-        try (InputStream inputStream = TreeBuilder.class.getResourceAsStream("/data/data.json");
+        try (InputStream inputStream = TreeBuilderService.class.getResourceAsStream("/data/data.json");
              InputStreamReader reader = new InputStreamReader(inputStream);
              BufferedReader bufferedReader = new BufferedReader(reader)) {
 
