@@ -1,4 +1,4 @@
-package com.example.university.project.jsonObjects;
+package edu.university.examinator.domain;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -9,7 +9,6 @@ public class Question {
     private List<String> options;
     private String correctAnswer;
     private String pathToImage;
-
     public String getPathToImage() {
         return pathToImage;
     }
@@ -19,7 +18,6 @@ public class Question {
     }
 
     public List<String> getOptions() {
-        Collections.shuffle(options);
         return options;
     }
     public String getCorrectAnswer() {
@@ -29,5 +27,4 @@ public class Question {
         // Перевірте, чи відповідь коректна
         return userAnswer != null && userAnswer.equals(correctAnswer);
     }
-
 }
