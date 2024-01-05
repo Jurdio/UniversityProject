@@ -1,8 +1,8 @@
-package com.example.university.project.controllers.controllersServices.startLearnControllerServices;
+package edu.university.examinator.service;
 
 
-import com.example.university.project.jsonObjects.Subtopic;
-import com.example.university.project.jsonObjects.Topic;
+import edu.university.examinator.domain.Subtopic;
+import edu.university.examinator.domain.Topic;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

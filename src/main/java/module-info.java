@@ -10,23 +10,16 @@ module com.example.univesity_project {
     requires org.kordamp.bootstrapfx.core;
     requires com.google.gson;
 
-    exports com.example.university.project;
-    exports com.example.university.project.builders;
-    exports com.example.university.project.jsonObjects;
-    exports com.example.university.project.scenes;
-    exports com.example.university.project.controllers;
+    exports edu.university.examinator;
 
-    opens com.example.university.project to javafx.graphics, javafx.fxml;
+    exports edu.university.examinator.scene;
+    exports edu.university.examinator.controller;
 
-    opens com.example.university.project.controllers to javafx.fxml, com.google.gson;
-    opens com.example.university.project.scenes to javafx.fxml;
-    opens com.example.university.project.jsonObjects to com.google.gson, javafx.fxml;
-    opens com.example.university.project.builders to com.google.gson, javafx.fxml;
+    opens edu.university.examinator to javafx.graphics, javafx.fxml;
 
-    // Опційно: вказати точку входу для запуску додатка
-    // Додаткові opens та exports, які можуть бути потрібні
+    opens edu.university.examinator.controller to javafx.fxml, com.google.gson;
+    opens edu.university.examinator.scene to javafx.fxml;
+    exports edu.university.examinator.domain;
+    opens edu.university.examinator.domain to com.google.gson, javafx.fxml;
 
-    // Опційно: ви можете використовувати цей атрибут, щоб вказати точку входу
-    // до вашого додатка
-    // uses javafx.graphics/javafx.application.Application;
 }

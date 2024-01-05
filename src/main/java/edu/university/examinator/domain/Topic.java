@@ -1,4 +1,4 @@
-package com.example.university.project.jsonObjects;
+package edu.university.examinator.domain;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -8,8 +8,6 @@ public class Topic {
     @SerializedName("name")
     public String name;
     private List<Subtopic> subtopics;
-
-    // Геттери, сеттери та інші методи
 
     public String getName() {
         return name;

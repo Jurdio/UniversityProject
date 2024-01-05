@@ -1,6 +1,4 @@
-package com.example.university.project.jsonObjects;
-
-import com.google.gson.annotations.SerializedName;
+package edu.university.examinator.domain;
 
 public class Subtopic {
     public String name;
@@ -11,5 +9,5 @@ public class Subtopic {
     public String getContent() {
         return content;
     }
-// Геттери, сеттери та інші методи
+
 }
