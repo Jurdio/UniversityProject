@@ -9,7 +9,7 @@
 <AnchorPane id="anchorPaneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0" prefWidth="600.0" stylesheets="@../css.css" xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.university.project.controllers.AboutUsController">
+            fx:controller="edu.university.examinator.controller.AboutUsController">
    <AnchorPane id="aboutsUsTablet" layoutX="300.0" layoutY="75.0" prefHeight="456.0" prefWidth="200.0"
                stylesheets="/css.css">
       <Button id="aboutUsButton" layoutX="269.0" layoutY="375.0" mnemonicParsing="false" onAction="#exit"

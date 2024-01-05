@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.web.*?>
 
-<AnchorPane styleClass="window" stylesheets="@../css.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.university.project.controllers.StartLearnController">
+<AnchorPane styleClass="window" stylesheets="@../css.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.university.examinator.controller.StartLearnController">
    <HBox styleClass="window" stylesheets="@../css.css">
       <AnchorPane styleClass="left-part" stylesheets="@../css.css">
          <VBox id="leftV" alignment="TOP_CENTER" prefHeight="385.0" prefWidth="250.0" stylesheets="@../css.css">
