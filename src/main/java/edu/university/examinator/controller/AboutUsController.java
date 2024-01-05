@@ -1,6 +1,6 @@
-package com.example.university.project.controllers;
+package edu.university.examinator.controller;
 
-import com.example.university.project.scenes.Menu;
+import edu.university.examinator.scene.Menu;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

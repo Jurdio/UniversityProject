@@ -1,8 +1,8 @@
-package com.example.university.project.controllers;
+package edu.university.examinator.controller;
 
-import com.example.university.project.scenes.AboutUs;
-import com.example.university.project.scenes.StartLearn;
-import com.example.university.project.scenes.Test;
+import edu.university.examinator.scene.AboutUs;
+import edu.university.examinator.scene.StartLearn;
+import edu.university.examinator.scene.Test;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

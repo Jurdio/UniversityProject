@@ -1,7 +1,5 @@
-package com.example.university.project.scenes;
+package edu.university.examinator.scene;
 
-import com.example.university.project.controllers.TestController;
-import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 
 public class Test extends Scene{

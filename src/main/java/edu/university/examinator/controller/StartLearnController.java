@@ -1,10 +1,10 @@
-package com.example.university.project.controllers;
+package edu.university.examinator.controller;
 
-import com.example.university.project.builders.TreeBuilder;
-import com.example.university.project.jsonObjects.Subtopic;
-import com.example.university.project.jsonObjects.Topic;
-import com.example.university.project.scenes.Menu;
-import com.example.university.project.scenes.Test;
+import edu.university.examinator.service.TreeBuilderService;
+import edu.university.examinator.domain.Subtopic;
+import edu.university.examinator.domain.Topic;
+import edu.university.examinator.scene.Menu;
+import edu.university.examinator.scene.Test;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -34,7 +34,7 @@ public class StartLearnController implements Initializable {
 
     private void initializeTree() {
         treeView.setRoot(new TreeItem<>("Теми для вивчення"));
-        TreeItem<String> treeItem = new TreeBuilder().buildTree();
+        TreeItem<String> treeItem = new TreeBuilderService().buildTree();
         treeView.getRoot().getChildren().addAll(treeItem.getChildren());
         setupTreeViewSelectionHandler();
     }
@@ -53,7 +53,7 @@ public class StartLearnController implements Initializable {
         String selectedText = selectedTreeItem.getValue();
         System.out.println("Selected: " + selectedText);
 
-        for (Topic topic : TreeBuilder.topics) {
+        for (Topic topic : TreeBuilderService.topics) {
             for (Subtopic subtopic : topic.getSubtopics()) {
                 if (subtopic.getName().equals(selectedText)) {
                     System.out.println(subtopic.getContent());

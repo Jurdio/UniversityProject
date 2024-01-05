@@ -1,4 +1,4 @@
-package com.example.university.project.scenes;
+package edu.university.examinator.scene;
 
 import javafx.stage.Stage;
 
