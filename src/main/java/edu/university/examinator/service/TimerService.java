@@ -2,12 +2,11 @@ package edu.university.examinator.service;
 
 import edu.university.examinator.domain.ConsoleTimer;
 import edu.university.examinator.domain.ProgressLine;
-import edu.university.examinator.service.listener.TimeChangeListener;
 import javafx.application.Platform;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.text.Text;
 
-public class TimerService implements TimeChangeListener {
+public class TimerService {
     private final ConsoleTimer consoleTimer;
     private final ProgressLine progressLine;
     private final Text timerText;
@@ -41,7 +40,6 @@ public class TimerService implements TimeChangeListener {
     public void setTimelineFinishedHandler(Runnable handler) {
         progressLine.setTimelineFinishedHandler(handler);
     }
-    @Override
     public void onTimeChanged(int milliseconds) {
         Platform.runLater(()-> timerText.setText(timeFormatter(milliseconds)));
     }

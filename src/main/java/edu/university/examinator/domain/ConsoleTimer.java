@@ -1,6 +1,6 @@
 package edu.university.examinator.domain;
 
-import edu.university.examinator.service.listener.TimeChangeListener;
+import edu.university.examinator.service.TimerService;
 import lombok.Getter;
 
 import java.util.Timer;
@@ -10,9 +10,9 @@ public class ConsoleTimer {
     @Getter
     private final int totalMilliseconds = 5000;  // Загальний час в мілісекундах
     private Timer timer;
-    private final TimeChangeListener timeChangeListener;
-    public ConsoleTimer(TimeChangeListener timeChangeListener){
-        this.timeChangeListener = timeChangeListener;
+    private TimerService timerService;
+    public ConsoleTimer(TimerService timerService){
+        this.timerService = timerService;
     }
     public int getTotalSeconds(){
         return totalMilliseconds / 1000;
@@ -42,8 +42,8 @@ public class ConsoleTimer {
         notifyTimeChanged(totalMilliseconds);
     }
     private void notifyTimeChanged(int milliseconds) {
-        if (timeChangeListener != null) {
-            timeChangeListener.onTimeChanged(milliseconds);
+        if (timerService != null) {
+            timerService.onTimeChanged(milliseconds);
         }
     }
     private void handleTimerFinish() {
