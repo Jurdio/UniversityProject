@@ -1,7 +1,5 @@
 package edu.university.examinator.domain;
 
-import edu.university.examinator.service.handler.TimelineFinishedHandler;
-import edu.university.examinator.initialization.EventHandlerInitializer;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -9,10 +7,10 @@ import javafx.animation.Timeline;
 import javafx.scene.control.ProgressBar;
 import javafx.util.Duration;
 
-public class ProgressLine implements EventHandlerInitializer {
+public class ProgressLine {
     private Timeline timerTimeline;
     private final ProgressBar progressBar;
-    private TimelineFinishedHandler timelineFinishedHandler;
+    private Runnable timelineFinishedHandler;
     public ProgressLine(ProgressBar progressBar){
         this.progressBar = progressBar;
     }
@@ -21,7 +19,7 @@ public class ProgressLine implements EventHandlerInitializer {
                 new KeyFrame(Duration.seconds(seconds), new KeyValue(progressBar.progressProperty(), 0))
         );
 
-       timerTimeline.setOnFinished(event -> TimelineFinishHandler());
+       timerTimeline.setOnFinished(event -> timelineFinishHandler());
        timerTimeline.setCycleCount(1);
     }
     public void startTimeline(int milliseconds){
@@ -50,16 +48,12 @@ public class ProgressLine implements EventHandlerInitializer {
             progressBar.getStyleClass().add("progress-bar");
         }
     }
-    public void setTimelineFinishedHandler(TimelineFinishedHandler handler) {
+    public void setTimelineFinishedHandler(Runnable handler) {
         this.timelineFinishedHandler = handler;
     }
-    public void TimelineFinishHandler() {
+    public void timelineFinishHandler() {
         if (timelineFinishedHandler != null) {
-            timelineFinishedHandler.handleTimelineFinished();
+            timelineFinishedHandler.run();
         }
-    }
-    @Override
-    public void initializeEventHandlers() {
-        timerTimeline.setOnFinished(event -> TimelineFinishHandler());
     }
 }

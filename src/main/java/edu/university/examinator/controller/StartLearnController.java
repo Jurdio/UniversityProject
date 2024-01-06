@@ -26,7 +26,7 @@ public class StartLearnController implements Initializable {
     private TreeView<String> treeView;
     @FXML
     private WebView webView;
-      @Override
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeTree();
         webView.getEngine().load(getClass().getResource("/pages/welcomePage.html").toExternalForm());
@@ -38,7 +38,6 @@ public class StartLearnController implements Initializable {
         treeView.getRoot().getChildren().addAll(treeItem.getChildren());
         setupTreeViewSelectionHandler();
     }
-
     private void setupTreeViewSelectionHandler() {
         // Додаємо обробник подій для елементів TreeView
         treeView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -47,7 +46,6 @@ public class StartLearnController implements Initializable {
             }
         });
     }
-
     private void handleTreeViewSelection(TreeItem<String> selectedTreeItem) {
         // Код обробки вибору елементу TreeView
         String selectedText = selectedTreeItem.getValue();
@@ -84,7 +82,6 @@ public class StartLearnController implements Initializable {
             }
         }
     }
-
     @FXML
     private void switchToMenu(ActionEvent event) throws Exception{
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

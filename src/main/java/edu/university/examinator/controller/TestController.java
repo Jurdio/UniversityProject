@@ -2,9 +2,6 @@ package edu.university.examinator.controller;
 
 import edu.university.examinator.scene.Menu;
 import edu.university.examinator.service.*;
-import edu.university.examinator.initialization.EventHandlerInitializer;
-import edu.university.examinator.initialization.FieldsInitializer;
-import edu.university.examinator.initialization.ServiceInitializer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,7 +13,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-public class TestController implements Initializable, FieldsInitializer, ServiceInitializer, EventHandlerInitializer {
+public class TestController implements Initializable, Runnable {
     @FXML
     private ImageView testImage;
     @FXML
@@ -104,7 +101,6 @@ public class TestController implements Initializable, FieldsInitializer, Service
         initializeServices();
         initializeEventHandlers();
     }
-    @Override
     public void initializePrimaryState() {
         questionText.setWrappingWidth(600);
         startButton.setDisable(false);
@@ -112,13 +108,11 @@ public class TestController implements Initializable, FieldsInitializer, Service
         initializeRadioButtonList();
         disableQuestions();
     }
-    @Override
     public void initializeServices() {
         timerService = new TimerService(timerText, timerProgressBar);
         questionService = new QuestionService(questionText, radioButtonList, testImage, toggleGroup);
         resultService = new ResultService(correctCountText, incorrectCountText);
     }
-    @Override
     public void initializeEventHandlers() {
         startButton.setOnAction(actionEvent -> {
             startButton.setDisable(true);
@@ -129,7 +123,12 @@ public class TestController implements Initializable, FieldsInitializer, Service
 
         answerButton.setOnAction((actionEvent -> updateTestCounters()));
 
-        timerService.setTimelineFinishedHandler(this::handleTimerFinish);
+        timerService.setTimelineFinishedHandler(() -> run());
+    }
+
+    @Override
+    public void run() {
+        handleTimerFinish();
     }
 }
 

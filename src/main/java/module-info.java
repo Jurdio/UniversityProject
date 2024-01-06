@@ -9,6 +9,7 @@ module com.example.univesity_project {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires com.google.gson;
+    requires lombok;
 
     exports edu.university.examinator;
 

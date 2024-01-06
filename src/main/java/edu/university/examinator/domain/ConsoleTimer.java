@@ -1,11 +1,13 @@
 package edu.university.examinator.domain;
 
 import edu.university.examinator.service.listener.TimeChangeListener;
+import lombok.Getter;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class ConsoleTimer {
+    @Getter
     private final int totalMilliseconds = 5000;  // Загальний час в мілісекундах
     private Timer timer;
     private final TimeChangeListener timeChangeListener;
@@ -14,9 +16,6 @@ public class ConsoleTimer {
     }
     public int getTotalSeconds(){
         return totalMilliseconds / 1000;
-    }
-    public int getTotalMilliseconds() {
-        return totalMilliseconds;
     }
     public void startTimer() {
         timer = new Timer();

@@ -2,7 +2,6 @@ package edu.university.examinator.service;
 
 import edu.university.examinator.domain.ConsoleTimer;
 import edu.university.examinator.domain.ProgressLine;
-import edu.university.examinator.service.handler.TimelineFinishedHandler;
 import edu.university.examinator.service.listener.TimeChangeListener;
 import javafx.application.Platform;
 import javafx.scene.control.ProgressBar;
@@ -39,7 +38,7 @@ public class TimerService implements TimeChangeListener {
         // Форматування часу у вигляді "00:01:28"
         return String.format("%02d:%02d:%02d", minutes, seconds, milliseconds);
     }
-    public void setTimelineFinishedHandler(TimelineFinishedHandler handler) {
+    public void setTimelineFinishedHandler(Runnable handler) {
         progressLine.setTimelineFinishedHandler(handler);
     }
     @Override
