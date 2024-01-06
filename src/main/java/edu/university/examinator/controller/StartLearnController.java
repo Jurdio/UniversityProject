@@ -1,10 +1,10 @@
 package edu.university.examinator.controller;
 
-import edu.university.examinator.service.TreeBuilderService;
+import edu.university.examinator.content.fx.scene.Menu;
+import edu.university.examinator.content.fx.scene.Test;
 import edu.university.examinator.domain.Subtopic;
 import edu.university.examinator.domain.Topic;
-import edu.university.examinator.scene.Menu;
-import edu.university.examinator.scene.Test;
+import edu.university.examinator.service.TreeBuilderService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,6 +26,7 @@ public class StartLearnController implements Initializable {
     private TreeView<String> treeView;
     @FXML
     private WebView webView;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeTree();
@@ -38,6 +39,7 @@ public class StartLearnController implements Initializable {
         treeView.getRoot().getChildren().addAll(treeItem.getChildren());
         setupTreeViewSelectionHandler();
     }
+
     private void setupTreeViewSelectionHandler() {
         // Додаємо обробник подій для елементів TreeView
         treeView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -46,6 +48,7 @@ public class StartLearnController implements Initializable {
             }
         });
     }
+
     private void handleTreeViewSelection(TreeItem<String> selectedTreeItem) {
         // Код обробки вибору елементу TreeView
         String selectedText = selectedTreeItem.getValue();
@@ -82,11 +85,13 @@ public class StartLearnController implements Initializable {
             }
         }
     }
+
     @FXML
-    private void switchToMenu(ActionEvent event) throws Exception{
+    private void switchToMenu(ActionEvent event) throws Exception {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Menu.getInstance().start(stage);
     }
+
     @FXML
     public void switchToTest(ActionEvent event) throws Exception {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

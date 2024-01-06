@@ -1,8 +1,8 @@
 package edu.university.examinator.loader;
 
-import edu.university.examinator.domain.Question;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import edu.university.examinator.domain.Question;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,24 +13,28 @@ import java.util.Objects;
 
 public class QuestionsLoader {
     private final List<Question> questionList;
-    public QuestionsLoader(){
+
+    public QuestionsLoader() {
         questionList = loadQuestionsFromJson();
     }
-    private List<Question> loadQuestionsFromJson(){
+
+    private List<Question> loadQuestionsFromJson() {
         try (InputStream inputStream = QuestionsLoader.class.getResourceAsStream("/data/questions.json");
              InputStreamReader reader = new InputStreamReader(Objects.requireNonNull(inputStream))) {
 
             Gson gson = new Gson();
-            return gson.fromJson(reader, new TypeToken<List<Question>>() {}.getType());
+            return gson.fromJson(reader, new TypeToken<List<Question>>() {
+            }.getType());
 
         } catch (IOException e) {
             return Collections.emptyList();
         }
     }
-    public List<Question> getQuestionList(){
+
+    public List<Question> getQuestionList() {
         Collections.shuffle(questionList);
 
-        for (Question question : questionList){
+        for (Question question : questionList) {
             Collections.shuffle(question.getOptions());
         }
 

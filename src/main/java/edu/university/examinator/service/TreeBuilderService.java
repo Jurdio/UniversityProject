@@ -1,12 +1,12 @@
 package edu.university.examinator.service;
 
 
-import edu.university.examinator.domain.Subtopic;
-import edu.university.examinator.domain.Topic;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import edu.university.examinator.domain.Subtopic;
+import edu.university.examinator.domain.Topic;
 import javafx.scene.control.TreeItem;
 
 import java.io.BufferedReader;

@@ -2,8 +2,6 @@ package edu.university.examinator.domain;
 
 import lombok.Getter;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 @Getter

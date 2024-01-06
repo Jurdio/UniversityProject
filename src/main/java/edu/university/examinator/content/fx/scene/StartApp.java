@@ -1,7 +1,8 @@
-package edu.university.examinator.scene;
+package edu.university.examinator.content.fx.scene;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+
 /**
  * The main class responsible for launching the application.
  */

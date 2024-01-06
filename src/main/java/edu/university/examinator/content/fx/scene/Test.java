@@ -1,12 +1,14 @@
-package edu.university.examinator.scene;
+package edu.university.examinator.content.fx.scene;
 
 import javafx.stage.Stage;
 
-public class Test extends Scene{
+public class Test extends Scene {
     private static Test instance;
+
     private Test() {
         super("/views/test.fxml");
     }
+
     // Повернути єдиний екземпляр класу
     public static synchronized Test getInstance() {
         if (instance == null) {
@@ -14,6 +16,7 @@ public class Test extends Scene{
         }
         return instance;
     }
+
     @Override
     public void start(Stage stage) throws Exception {
         loadScene(stage);

@@ -1,23 +1,21 @@
-package edu.university.examinator.scene;
+package edu.university.examinator.content.fx.scene;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
 /**
  * Abstract class representing a scene in the application.
  */
 public abstract class Scene extends Application {
     protected String path;
+
     public Scene(String path) {
         this.path = path;
-    }
-
-    public Scene(StackPane root, int i, int i1) {
     }
 
     public void loadScene(Stage stage) throws IOException {

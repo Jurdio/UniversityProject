@@ -1,11 +1,12 @@
 package edu.university.examinator.controller;
 
-import edu.university.examinator.scene.Menu;
+import edu.university.examinator.content.fx.scene.Menu;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.stage.Stage;
+
 /**
  * Controller class for the "About Us" scene.
  */
@@ -22,6 +23,7 @@ public class AboutUsController {
         Menu.getInstance().start(stage);
 
     }
+
     /**
      * Exits the application.
      */

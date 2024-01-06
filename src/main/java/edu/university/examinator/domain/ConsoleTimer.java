@@ -9,18 +9,22 @@ import java.util.TimerTask;
 public class ConsoleTimer {
     @Getter
     private final int totalMilliseconds = 5000;  // Загальний час в мілісекундах
+    private final TimerService timerService;
     private Timer timer;
-    private TimerService timerService;
-    public ConsoleTimer(TimerService timerService){
+
+    public ConsoleTimer(TimerService timerService) {
         this.timerService = timerService;
     }
-    public int getTotalSeconds(){
+
+    public int getTotalSeconds() {
         return totalMilliseconds / 1000;
     }
+
     public void startTimer() {
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             int tempMilliseconds = totalMilliseconds;
+
             @Override
             public void run() {
                 if (tempMilliseconds > 0) {
@@ -33,19 +37,23 @@ public class ConsoleTimer {
         }, 0, 10);  // Оновлення кожну мілісекунду (1 мілісекунда)
 
     }
+
     public void stopTimer() {
-        if (timer != null){
+        if (timer != null) {
             timer.cancel();
         }
     }
-    public void resetTimer(){
+
+    public void resetTimer() {
         notifyTimeChanged(totalMilliseconds);
     }
+
     private void notifyTimeChanged(int milliseconds) {
         if (timerService != null) {
             timerService.onTimeChanged(milliseconds);
         }
     }
+
     private void handleTimerFinish() {
         try {
             stopTimer();

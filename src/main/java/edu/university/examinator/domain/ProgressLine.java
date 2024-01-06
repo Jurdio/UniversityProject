@@ -8,21 +8,24 @@ import javafx.scene.control.ProgressBar;
 import javafx.util.Duration;
 
 public class ProgressLine {
-    private Timeline timerTimeline;
     private final ProgressBar progressBar;
+    private Timeline timerTimeline;
     private Runnable timelineFinishedHandler;
-    public ProgressLine(ProgressBar progressBar){
+
+    public ProgressLine(ProgressBar progressBar) {
         this.progressBar = progressBar;
     }
-    public void initializeTimeline(int seconds){
+
+    public void initializeTimeline(int seconds) {
         timerTimeline = new Timeline(
                 new KeyFrame(Duration.seconds(seconds), new KeyValue(progressBar.progressProperty(), 0))
         );
 
-       timerTimeline.setOnFinished(event -> timelineFinishHandler());
-       timerTimeline.setCycleCount(1);
+        timerTimeline.setOnFinished(event -> timelineFinishHandler());
+        timerTimeline.setCycleCount(1);
     }
-    public void startTimeline(int milliseconds){
+
+    public void startTimeline(int milliseconds) {
         if (timerTimeline.getStatus() != Animation.Status.RUNNING) {
             timerTimeline.playFromStart();
         }
@@ -37,20 +40,24 @@ public class ProgressLine {
             }
         });
     }
-    public void stopTimeline(){
+
+    public void stopTimeline() {
         timerTimeline.stop();
     }
-    public void resetTimeline(){
-        if (timerTimeline != null){
+
+    public void resetTimeline() {
+        if (timerTimeline != null) {
             stopTimeline();
             progressBar.setProgress(1);
             progressBar.getStyleClass().clear();
             progressBar.getStyleClass().add("progress-bar");
         }
     }
+
     public void setTimelineFinishedHandler(Runnable handler) {
         this.timelineFinishedHandler = handler;
     }
+
     public void timelineFinishHandler() {
         if (timelineFinishedHandler != null) {
             timelineFinishedHandler.run();

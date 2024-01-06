@@ -13,13 +13,13 @@ module com.example.univesity_project {
 
     exports edu.university.examinator;
 
-    exports edu.university.examinator.scene;
+    exports edu.university.examinator.content.fx.scene;
     exports edu.university.examinator.controller;
 
     opens edu.university.examinator to javafx.graphics, javafx.fxml;
 
     opens edu.university.examinator.controller to javafx.fxml, com.google.gson;
-    opens edu.university.examinator.scene to javafx.fxml;
+    opens edu.university.examinator.content.fx.scene to javafx.fxml;
     exports edu.university.examinator.domain;
     opens edu.university.examinator.domain to com.google.gson, javafx.fxml;
 
