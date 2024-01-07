@@ -2,7 +2,9 @@
 
 **Examinator** is an educational application designed to facilitate the learning process by providing theoretical materials and quizzes for better comprehension. Whether you're a student looking to reinforce your understanding of various topics or an educator aiming to create interactive learning experiences, **Examinator** has you covered.
 
-![Screenshot](src/resources/images/readme/Screenshot_1.png)
+![Screenshot](readme/Screenshot_1.png)
+![Screenshot](readme/Screenshot_2.png)
+![Screenshot](readme/Screenshot_3.png)
 
 
 
