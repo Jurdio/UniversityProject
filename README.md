@@ -13,3 +13,25 @@
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/your-username/Examinator.git
+
+2. **Run the Application:**
+   ```bash
+   mvn javafx:run
+3. **Explore and Learn:**
+   Open Examinator, explore the available materials, and take quizzes to enhance your learning experience.
+
+## Dependencies
+- JavaFX: JavaFX library for building rich desktop applications.
+- Gson: JSON library for Java.
+- Lombok: Java library that helps reduce boilerplate code.
+
+## Contributing
+Contributions are welcome! If you would like to contribute to Examinator, please follow the contribution guidelines.
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+Special thanks to contributors who have dedicated their time and effort to improve Examinator.
+
+Happy learning with Examinator! 📚✨
